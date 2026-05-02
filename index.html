@@ -26,7 +26,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── Hero Background ── */
     .hero-bg {
       background:
         linear-gradient(135deg, var(--vt-dark) 0%, #2D1B3D 40%, var(--vt-red-dark) 100%);
@@ -53,7 +52,6 @@
       pointer-events: none;
     }
 
-    /* ── Grid Pattern Overlay ── */
     .circuit-pattern {
       position: absolute;
       top: 0; right: 0;
@@ -62,7 +60,6 @@
       pointer-events: none;
     }
 
-    /* ── Typography ── */
     .heading-display {
       font-family: 'Playfair Display', 'Times New Roman', serif;
       font-weight: 800;
@@ -70,7 +67,6 @@
       line-height: 1.1;
     }
 
-    /* ── Form Styling ── */
     .form-input {
       font-family: 'Times New Roman', serif;
       font-size: 1rem;
@@ -91,7 +87,6 @@
       font-style: italic;
     }
 
-    /* ── Radio Custom ── */
     .radio-group {
       display: flex;
       flex-wrap: wrap;
@@ -147,7 +142,6 @@
       border-radius: 50%;
     }
 
-    /* ── Checkbox Custom ── */
     .check-card {
       position: relative;
       cursor: pointer;
@@ -193,13 +187,12 @@
       background: var(--vt-red);
     }
     .check-card input:checked + .card-label .box::after {
-      content: '✓';
+      content: '\2713';
       color: #fff;
       font-size: 13px;
       font-weight: 700;
     }
 
-    /* ── Submit Button ── */
     .btn-submit {
       font-family: 'Times New Roman', serif;
       font-size: 1.1rem;
@@ -230,7 +223,6 @@
       box-shadow: none;
     }
 
-    /* ── Animations ── */
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -247,7 +239,6 @@
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
 
-    /* ── Decorative Line ── */
     .red-line {
       width: 80px;
       height: 4px;
@@ -255,7 +246,6 @@
       border-radius: 2px;
     }
 
-    /* ── Success Panel ── */
     .success-panel {
       display: none;
     }
@@ -264,7 +254,6 @@
       animation: fadeInUp 0.5s ease-out;
     }
 
-    /* ── Label ── */
     .field-label {
       font-size: 1.05rem;
       font-weight: 700;
@@ -276,7 +265,6 @@
       color: var(--vt-red);
     }
 
-    /* ── Print Styles ── */
     @media print {
       .hero-bg { background: #fff !important; color: #000 !important; }
       .hero-bg::before, .hero-bg::after, .circuit-pattern { display: none !important; }
@@ -285,7 +273,6 @@
       .form-section { box-shadow: none !important; border: 1px solid #ddd; }
     }
 
-    /* ── Toast ── */
     .toast {
       position: fixed;
       top: 24px;
@@ -303,7 +290,6 @@
     .toast.error { background: #DC2626; }
     .toast.success { background: #16A34A; }
 
-    /* ── Spinner ── */
     .spinner {
       display: inline-block;
       width: 20px; height: 20px;
@@ -319,12 +305,14 @@
 </head>
 <body>
 
-<!-- ════════════════════ TOAST ════════════════════ -->
+<!-- TOAST -->
 <div id="toast" class="toast"></div>
+
+<!-- IFRAME ẨN - dùng để gửi form -->
+<iframe name="hiddenFrame" id="hiddenFrame" style="display:none;"></iframe>
 
 <!-- ════════════════════ HERO ════════════════════ -->
 <header class="hero-bg text-white py-16 md:py-24 px-6 relative">
-  <!-- Circuit decoration -->
   <svg class="circuit-pattern" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
     <g stroke="white" fill="none" stroke-width="1.5">
       <circle cx="50" cy="50" r="6"/><line x1="56" y1="50" x2="120" y2="50"/>
@@ -342,7 +330,6 @@
   </svg>
 
   <div class="max-w-4xl mx-auto text-center relative z-10">
-    <!-- Logo text -->
     <div class="animate-in delay-1 mb-6">
       <span style="font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; display: block; margin-bottom: 4px;">
         Tổng Công ty Mạng lưới
@@ -381,11 +368,9 @@
 <!-- ════════════════════ FORM SECTION ════════════════════ -->
 <main class="max-w-3xl mx-auto px-4 py-12 md:py-16" id="survey-form">
 
-  <!-- Form Container -->
   <div id="formContainer">
     <div class="form-section bg-white rounded-2xl shadow-xl p-8 md:p-12" style="border-top: 5px solid var(--vt-red);">
 
-      <!-- Section Header -->
       <div class="mb-10 text-center">
         <div class="red-line mx-auto mb-4"></div>
         <h2 class="heading-display text-2xl md:text-3xl" style="color: var(--vt-dark);">
@@ -396,7 +381,7 @@
         </p>
       </div>
 
-      <!-- ── 1. Họ và tên ── -->
+      <!-- 1. Họ và tên -->
       <div class="mb-8">
         <label class="field-label" for="hoTen">
           1. Họ và tên <span class="required">*</span>
@@ -404,7 +389,7 @@
         <input type="text" id="hoTen" class="form-input" placeholder="Nguyễn Văn A" required />
       </div>
 
-      <!-- ── 2. Đơn vị công tác ── -->
+      <!-- 2. Đơn vị công tác -->
       <div class="mb-8">
         <label class="field-label" for="donVi">
           2. Đơn vị công tác <span class="required">*</span>
@@ -412,7 +397,7 @@
         <input type="text" id="donVi" class="form-input" placeholder="Trung tâm / Phòng / Ban..." required />
       </div>
 
-      <!-- ── 3. Chức danh ── -->
+      <!-- 3. Chức danh -->
       <div class="mb-8">
         <label class="field-label" for="chucDanh">
           3. Chức danh
@@ -420,7 +405,7 @@
         <input type="text" id="chucDanh" class="form-input" placeholder="Chuyên viên / Trưởng phòng / CBQL..." />
       </div>
 
-      <!-- ── 4. Email ── -->
+      <!-- 4. Email -->
       <div class="mb-8">
         <label class="field-label" for="email">
           4. Email công việc <span class="required">*</span>
@@ -428,36 +413,36 @@
         <input type="email" id="email" class="form-input" placeholder="nguyenvana@viettel.com.vn" required />
       </div>
 
-      <!-- ── 5. Mức độ thành thạo AI ── -->
+      <!-- 5. Mức độ thành thạo AI -->
       <div class="mb-8">
         <label class="field-label">
           5. Mức độ thành thạo AI hiện tại của bạn <span class="required">*</span>
         </label>
         <div class="radio-group mt-3">
           <label class="radio-card">
-            <input type="radio" name="mucDo" value="1 – Chưa biết gì" required />
+            <input type="radio" name="mucDo" value="1 - Chua biet gi" required />
             <span class="card-label"><span class="dot"></span>1 – Chưa biết gì</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="mucDo" value="2 – Biết sơ lược" />
+            <input type="radio" name="mucDo" value="2 - Biet so luoc" />
             <span class="card-label"><span class="dot"></span>2 – Biết sơ lược</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="mucDo" value="3 – Đã dùng thử" />
+            <input type="radio" name="mucDo" value="3 - Da dung thu" />
             <span class="card-label"><span class="dot"></span>3 – Đã dùng thử</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="mucDo" value="4 – Sử dụng thường xuyên" />
+            <input type="radio" name="mucDo" value="4 - Su dung thuong xuyen" />
             <span class="card-label"><span class="dot"></span>4 – Sử dụng thường xuyên</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="mucDo" value="5 – Thành thạo / Ứng dụng sâu" />
+            <input type="radio" name="mucDo" value="5 - Thanh thao / Ung dung sau" />
             <span class="card-label"><span class="dot"></span>5 – Thành thạo / Ứng dụng sâu</span>
           </label>
         </div>
       </div>
 
-      <!-- ── 6. Chủ đề quan tâm (multi-select) ── -->
+      <!-- 6. Chủ đề quan tâm -->
       <div class="mb-8">
         <label class="field-label">
           6. Chủ đề đào tạo AI bạn quan tâm <span class="required">*</span>
@@ -465,41 +450,41 @@
         </label>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="Tổng quan AI & ứng dụng trong viễn thông" />
+            <input type="checkbox" name="chuDe" value="Tong quan AI va ung dung trong vien thong" />
             <span class="card-label"><span class="box"></span>Tổng quan AI & ứng dụng trong viễn thông</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="Prompt Engineering (viết lệnh AI hiệu quả)" />
+            <input type="checkbox" name="chuDe" value="Prompt Engineering" />
             <span class="card-label"><span class="box"></span>Prompt Engineering (viết lệnh AI hiệu quả)</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="Sử dụng ChatGPT / Gemini / Claude trong công việc" />
+            <input type="checkbox" name="chuDe" value="Su dung ChatGPT Gemini Claude" />
             <span class="card-label"><span class="box"></span>Sử dụng ChatGPT / Gemini / Claude trong công việc</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="AI trong phân tích dữ liệu & báo cáo" />
+            <input type="checkbox" name="chuDe" value="AI phan tich du lieu va bao cao" />
             <span class="card-label"><span class="box"></span>AI trong phân tích dữ liệu & báo cáo</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="Tự động hóa quy trình bằng AI (RPA + AI)" />
+            <input type="checkbox" name="chuDe" value="Tu dong hoa quy trinh RPA AI" />
             <span class="card-label"><span class="box"></span>Tự động hóa quy trình bằng AI (RPA + AI)</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="AI tạo nội dung: văn bản, hình ảnh, video" />
+            <input type="checkbox" name="chuDe" value="AI tao noi dung van ban hinh anh video" />
             <span class="card-label"><span class="box"></span>AI tạo nội dung: văn bản, hình ảnh, video</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="An toàn thông tin & đạo đức AI" />
+            <input type="checkbox" name="chuDe" value="An toan thong tin va dao duc AI" />
             <span class="card-label"><span class="box"></span>An toàn thông tin & đạo đức AI</span>
           </label>
           <label class="check-card">
-            <input type="checkbox" name="chuDe" value="Xây dựng chatbot / trợ lý ảo nội bộ" />
+            <input type="checkbox" name="chuDe" value="Xay dung chatbot tro ly ao noi bo" />
             <span class="card-label"><span class="box"></span>Xây dựng chatbot / trợ lý ảo nội bộ</span>
           </label>
         </div>
       </div>
 
-      <!-- ── 7. Chủ đề khác ── -->
+      <!-- 7. Chủ đề khác -->
       <div class="mb-8">
         <label class="field-label" for="chuDeKhac">
           7. Chủ đề khác bạn muốn đề xuất
@@ -507,7 +492,7 @@
         <input type="text" id="chuDeKhac" class="form-input" placeholder="Ví dụ: AI trong quản lý dự án..." />
       </div>
 
-      <!-- ── 8. Hình thức đào tạo ── -->
+      <!-- 8. Hình thức đào tạo -->
       <div class="mb-8">
         <label class="field-label">
           8. Hình thức đào tạo mong muốn <span class="required">*</span>
@@ -518,21 +503,21 @@
             <span class="card-label"><span class="dot"></span>Online (Zoom / Teams)</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="hinhThuc" value="Offline tại đơn vị" />
+            <input type="radio" name="hinhThuc" value="Offline tai don vi" />
             <span class="card-label"><span class="dot"></span>Offline tại đơn vị</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="hinhThuc" value="Kết hợp Online + Offline" />
+            <input type="radio" name="hinhThuc" value="Ket hop Online + Offline" />
             <span class="card-label"><span class="dot"></span>Kết hợp Online + Offline</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="hinhThuc" value="Tự học qua video / tài liệu" />
+            <input type="radio" name="hinhThuc" value="Tu hoc qua video / tai lieu" />
             <span class="card-label"><span class="dot"></span>Tự học qua video / tài liệu</span>
           </label>
         </div>
       </div>
 
-      <!-- ── 9. Mong muốn cụ thể ── -->
+      <!-- 9. Mong muốn cụ thể -->
       <div class="mb-10">
         <label class="field-label" for="mongMuon">
           9. Mong muốn / đề xuất cụ thể
@@ -541,7 +526,7 @@
           placeholder="Chia sẻ thêm mong muốn, kỳ vọng hoặc đề xuất của bạn về chương trình đào tạo AI..."></textarea>
       </div>
 
-      <!-- ── Submit ── -->
+      <!-- Submit -->
       <div class="text-center">
         <button type="button" id="btnSubmit" class="btn-submit no-print" onclick="submitForm()">
           GỬI KHẢO SÁT
@@ -558,13 +543,11 @@
   <div id="successPanel" class="success-panel">
     <div class="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center" style="border-top: 5px solid #16A34A;">
 
-      <!-- Check Icon -->
       <div style="
         width: 80px; height: 80px; border-radius: 50%;
         background: #DCFCE7; margin: 0 auto 24px;
         display: flex; align-items: center; justify-content: center;
         animation: pulse-glow 2s ease-in-out infinite;
-        --tw-ring-color: rgba(22,163,74,0.4);
       ">
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="20 6 9 17 4 12"/>
@@ -579,7 +562,6 @@
         Ban Đào tạo sẽ tổng hợp kết quả và thông báo kế hoạch đào tạo AI 2026 trong thời gian sớm nhất.
       </p>
 
-      <!-- Submitted info summary -->
       <div id="summaryBox" style="
         background: var(--vt-gray); border-radius: 12px; padding: 20px 24px;
         margin: 24px auto; max-width: 500px; text-align: left;
@@ -606,129 +588,164 @@
 <!-- ════════════════════ FOOTER ════════════════════ -->
 <footer class="text-center py-8 px-4 no-print" style="color: #AAA; font-size: 0.85rem;">
   <div class="red-line mx-auto mb-4"></div>
-  <p>© 2026 Viettel Networks – Tổng Công ty Mạng lưới Viettel</p>
+  <p>&copy; 2026 Viettel Networks – Tổng Công ty Mạng lưới Viettel</p>
   <p style="margin-top: 4px;">Ban Đào tạo & Phát triển Nguồn nhân lực</p>
 </footer>
 
 <!-- ════════════════════ SCRIPT ════════════════════ -->
 <script>
-  // ─── Google Apps Script Web App URL ───
-  // ⚠️ THAY URL BÊN DƯỚI BẰNG URL CỦA BẠN
-  const SCRIPT_URL = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycby9GGPU0EaqSv_Aw3Ramo7dvQd9TTN8mI5BruQQsIt6L1cv-JxZ1N1JR5-2F-jPSGEa/exec/exec';
+  // =====================================================
+  // ⚠️ THAY URL BÊN DƯỚI BẰNG URL APPS SCRIPT CỦA BẠN
+  // =====================================================
+  var SCRIPT_URL = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbxd4VmpU197LBPD8ztb2fvLCNeHCweKCYTkMMrcW5XNT4LDTZx2Tl3Qhx4Q_zve7gzw/exec/exec';
 
-  function showToast(msg, type = 'error') {
-    const t = document.getElementById('toast');
+  function showToast(msg, type) {
+    type = type || 'error';
+    var t = document.getElementById('toast');
     t.textContent = msg;
     t.className = 'toast ' + type;
-    setTimeout(() => t.classList.add('show'), 10);
-    setTimeout(() => t.classList.remove('show'), 4000);
+    setTimeout(function() { t.classList.add('show'); }, 10);
+    setTimeout(function() { t.classList.remove('show'); }, 4000);
   }
 
   function getCheckedValues(name) {
-    return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
-      .map(el => el.value);
+    var result = [];
+    var els = document.querySelectorAll('input[name="' + name + '"]:checked');
+    for (var i = 0; i < els.length; i++) {
+      result.push(els[i].value);
+    }
+    return result;
   }
 
   function getRadioValue(name) {
-    const el = document.querySelector(`input[name="${name}"]:checked`);
+    var el = document.querySelector('input[name="' + name + '"]:checked');
     return el ? el.value : '';
   }
 
   function submitForm() {
-    // Validate
-    const hoTen = document.getElementById('hoTen').value.trim();
-    const donVi = document.getElementById('donVi').value.trim();
-    const chucDanh = document.getElementById('chucDanh').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const mucDo = getRadioValue('mucDo');
-    const chuDe = getCheckedValues('chuDe');
-    const chuDeKhac = document.getElementById('chuDeKhac').value.trim();
-    const hinhThuc = getRadioValue('hinhThuc');
-    const mongMuon = document.getElementById('mongMuon').value.trim();
+    // Thu thập dữ liệu
+    var hoTen     = document.getElementById('hoTen').value.trim();
+    var donVi     = document.getElementById('donVi').value.trim();
+    var chucDanh  = document.getElementById('chucDanh').value.trim();
+    var email     = document.getElementById('email').value.trim();
+    var mucDo     = getRadioValue('mucDo');
+    var chuDe     = getCheckedValues('chuDe');
+    var chuDeKhac = document.getElementById('chuDeKhac').value.trim();
+    var hinhThuc  = getRadioValue('hinhThuc');
+    var mongMuon  = document.getElementById('mongMuon').value.trim();
 
-    if (!hoTen) { showToast('Vui lòng nhập Họ và tên.'); return; }
-    if (!donVi) { showToast('Vui lòng nhập Đơn vị công tác.'); return; }
-    if (!email) { showToast('Vui lòng nhập Email.'); return; }
-    if (!mucDo) { showToast('Vui lòng chọn mức độ thành thạo AI.'); return; }
+    // Validate
+    if (!hoTen)   { showToast('Vui lòng nhập Họ và tên.'); return; }
+    if (!donVi)   { showToast('Vui lòng nhập Đơn vị công tác.'); return; }
+    if (!email)   { showToast('Vui lòng nhập Email.'); return; }
+    if (!mucDo)   { showToast('Vui lòng chọn mức độ thành thạo AI.'); return; }
     if (chuDe.length === 0) { showToast('Vui lòng chọn ít nhất 1 chủ đề quan tâm.'); return; }
     if (!hinhThuc) { showToast('Vui lòng chọn hình thức đào tạo.'); return; }
 
-    const btn = document.getElementById('btnSubmit');
+    var btn = document.getElementById('btnSubmit');
     btn.disabled = true;
     btn.innerHTML = '<span class="spinner"></span>Đang gửi...';
 
-    const payload = {
-      hoTen, donVi, chucDanh, email, mucDo,
-      chuDe: chuDe.join('; '),
-      chuDeKhac, hinhThuc, mongMuon,
-      thoiGian: new Date().toLocaleString('vi-VN')
+    // ====================================================
+    // PHƯƠNG PHÁP: Tạo form ẩn + submit qua iframe
+    // Đây là cách đáng tin cậy nhất với Google Apps Script
+    // ====================================================
+
+    // Xóa form cũ nếu có
+    var oldForm = document.getElementById('gsForm');
+    if (oldForm) oldForm.remove();
+
+    // Tạo form ẩn
+    var form = document.createElement('form');
+    form.id = 'gsForm';
+    form.method = 'POST';
+    form.action = SCRIPT_URL;
+    form.target = 'hiddenFrame';  // Gửi vào iframe ẩn
+    form.style.display = 'none';
+
+    // Tạo các input ẩn chứa dữ liệu
+    var fields = {
+      'thoiGian': new Date().toLocaleString('vi-VN'),
+      'hoTen':     hoTen,
+      'donVi':     donVi,
+      'chucDanh':  chucDanh,
+      'email':     email,
+      'mucDo':     mucDo,
+      'chuDe':     chuDe.join('; '),
+      'chuDeKhac': chuDeKhac,
+      'hinhThuc':  hinhThuc,
+      'mongMuon':  mongMuon
     };
 
-      const formData = new URLSearchParams();
-    formData.append('data', JSON.stringify(payload));
+    for (var key in fields) {
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = fields[key];
+      form.appendChild(input);
+    }
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    })
-    .then(() => {
-      // Show success (no-cors always resolves)
+    document.body.appendChild(form);
+
+    // Submit form
+    form.submit();
+
+    // Đợi 2 giây rồi hiển thị kết quả
+    // (vì no-cors không đọc được response, ta dùng timeout)
+    setTimeout(function() {
+      // Hiện Success
       document.getElementById('formContainer').style.display = 'none';
-      const panel = document.getElementById('successPanel');
+      var panel = document.getElementById('successPanel');
       panel.classList.add('active');
 
-      // Build summary
-      document.getElementById('summaryBox').innerHTML = `
-        <div style="font-weight:700;color:var(--vt-red);margin-bottom:8px;font-size:1rem;">
-          Thông tin đã gửi:
-        </div>
-        <div><strong>Họ tên:</strong> ${hoTen}</div>
-        <div><strong>Đơn vị:</strong> ${donVi}</div>
-        ${chucDanh ? `<div><strong>Chức danh:</strong> ${chucDanh}</div>` : ''}
-        <div><strong>Email:</strong> ${email}</div>
-        <div><strong>Mức độ AI:</strong> ${mucDo}</div>
-        <div><strong>Chủ đề:</strong> ${chuDe.join('; ')}</div>
-        ${chuDeKhac ? `<div><strong>Chủ đề khác:</strong> ${chuDeKhac}</div>` : ''}
-        <div><strong>Hình thức:</strong> ${hinhThuc}</div>
-        ${mongMuon ? `<div><strong>Mong muốn:</strong> ${mongMuon}</div>` : ''}
-      `;
+      // Hiện tóm tắt
+      document.getElementById('summaryBox').innerHTML =
+        '<div style="font-weight:700;color:var(--vt-red);margin-bottom:8px;font-size:1rem;">Thông tin đã gửi:</div>' +
+        '<div><strong>Họ tên:</strong> ' + hoTen + '</div>' +
+        '<div><strong>Đơn vị:</strong> ' + donVi + '</div>' +
+        (chucDanh ? '<div><strong>Chức danh:</strong> ' + chucDanh + '</div>' : '') +
+        '<div><strong>Email:</strong> ' + email + '</div>' +
+        '<div><strong>Mức độ AI:</strong> ' + mucDo + '</div>' +
+        '<div><strong>Chủ đề:</strong> ' + chuDe.join('; ') + '</div>' +
+        (chuDeKhac ? '<div><strong>Chủ đề khác:</strong> ' + chuDeKhac + '</div>' : '') +
+        '<div><strong>Hình thức:</strong> ' + hinhThuc + '</div>' +
+        (mongMuon ? '<div><strong>Mong muốn:</strong> ' + mongMuon + '</div>' : '');
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    })
-    .catch(() => {
-      showToast('Có lỗi xảy ra. Vui lòng thử lại.');
-      btn.disabled = false;
-      btn.innerHTML = 'GỬI KHẢO SÁT';
-    });
+    }, 2000);
   }
 
   function resetForm() {
     document.getElementById('successPanel').classList.remove('active');
     document.getElementById('formContainer').style.display = 'block';
 
-    // Clear fields
     document.getElementById('hoTen').value = '';
     document.getElementById('donVi').value = '';
     document.getElementById('chucDanh').value = '';
     document.getElementById('email').value = '';
     document.getElementById('chuDeKhac').value = '';
     document.getElementById('mongMuon').value = '';
-    document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
-    document.querySelectorAll('input[type="checkbox"]').forEach(el => el.checked = false);
 
-    const btn = document.getElementById('btnSubmit');
+    var radios = document.querySelectorAll('input[type="radio"]');
+    for (var i = 0; i < radios.length; i++) radios[i].checked = false;
+    var checks = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checks.length; i++) checks[i].checked = false;
+
+    var btn = document.getElementById('btnSubmit');
     btn.disabled = false;
     btn.innerHTML = 'GỬI KHẢO SÁT';
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Smooth scroll for anchor
-  document.querySelector('a[href="#survey-form"]')?.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('survey-form').scrollIntoView({ behavior: 'smooth' });
-  });
+  // Smooth scroll
+  var scrollLink = document.querySelector('a[href="#survey-form"]');
+  if (scrollLink) {
+    scrollLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('survey-form').scrollIntoView({ behavior: 'smooth' });
+    });
+  }
 </script>
 
 </body>
