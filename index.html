@@ -664,11 +664,13 @@
       thoiGian: new Date().toLocaleString('vi-VN')
     };
 
+      const formData = new URLSearchParams();
+    formData.append('data', JSON.stringify(payload));
+
     fetch(SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: formData
     })
     .then(() => {
       // Show success (no-cors always resolves)
